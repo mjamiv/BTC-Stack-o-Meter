@@ -126,7 +126,6 @@ input:checked + .slider:before {
     transform: translateX(20px);
 }
 
-/* Dark Mode Styles */
 body.dark-mode {
     background: #121212;
     color: #ffffff;
@@ -135,7 +134,6 @@ body.dark-mode {
 .container.dark-mode {
     background: #333;
     color: #ffffff;
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.7);
 }
 
 h1.dark-mode,
