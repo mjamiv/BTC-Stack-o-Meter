@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bitcoin Gains Calculator</title>
+    <title>Bitcoin Stack Calculator</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1><i class="fab fa-bitcoin"></i> Bitcoin Gains Calculator</h1>
+        <h1><i class="fab fa-bitcoin"></i> Bitcoin Stack Calculator</h1>
 
         <label for="bitcoinStack">Enter your Bitcoin stack:</label>
         <input type="number" id="bitcoinStack" placeholder="e.g., 0.5" step="0.01">
@@ -20,9 +20,6 @@
             <option value="EUR">EUR</option>
             <option value="GBP">GBP</option>
         </select>
-
-        <label for="dateCompare">Compare with value on:</label>
-        <input type="date" id="dateCompare">
 
         <button onclick="calculateGains()">Calculate</button>
         
