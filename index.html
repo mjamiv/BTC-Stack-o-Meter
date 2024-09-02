@@ -10,41 +10,21 @@
 <body>
     <div class="container">
         <h1><i class="fab fa-bitcoin"></i> Bitcoin Gains Calculator</h1>
-
         <label for="bitcoinStack">Enter your Bitcoin stack:</label>
         <input type="number" id="bitcoinStack" placeholder="e.g., 0.5" step="0.01">
-
-        <label for="currency">Select currency:</label>
-        <select id="currency">
-            <option value="USD">USD</option>
-            <option value="EUR">EUR</option>
-            <option value="GBP">GBP</option>
-        </select>
-
-        <label for="dateCompare">Compare with value on:</label>
-        <input type="date" id="dateCompare">
-
         <button onclick="calculateGains()">Calculate</button>
-        
         <div id="loading" style="display: none;">
             <i class="fas fa-spinner fa-spin"></i> Loading...
         </div>
         <div id="result"></div>
-
-        <button onclick="savePortfolio()">Save to Portfolio</button>
-        <div id="portfolio"></div>
-
-        <canvas id="priceChart"></canvas>
-
         <div class="theme-toggle">
             <label class="switch">
-                <input type="checkbox" id="themeToggle" onclick="toggleTheme()">
+                <input type="checkbox" id="themeToggle" onchange="toggleTheme()">
                 <span class="slider round"></span>
             </label>
             <span>Dark Mode</span>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
