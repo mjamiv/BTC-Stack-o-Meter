@@ -8,7 +8,6 @@ body {
     height: 100vh;
     margin: 0;
     transition: background-color 0.3s ease, color 0.3s ease;
-    flex-direction: column;
 }
 
 .container {
@@ -34,8 +33,7 @@ label {
     display: block;
 }
 
-input,
-select {
+input {
     padding: 12px;
     width: 80%;
     margin: 10px 0 20px 0;
@@ -57,7 +55,6 @@ button {
     cursor: pointer;
     transition: background-color 0.3s ease;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-    margin-bottom: 10px;
 }
 
 button:hover {
@@ -143,8 +140,7 @@ p.dark-mode {
     color: #ffffff;
 }
 
-input.dark-mode,
-select.dark-mode {
+input.dark-mode {
     background-color: #444;
     color: #ffffff;
     border: 1px solid #666;
@@ -157,9 +153,4 @@ button.dark-mode {
 
 #result.dark-mode p {
     color: #ffffff;
-}
-
-canvas {
-    margin-top: 20px;
-    max-width: 100%;
 }
