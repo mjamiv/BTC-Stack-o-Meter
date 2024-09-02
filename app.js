@@ -43,6 +43,9 @@ async function calculateGains() {
 
 function displayChart(costBasis, usdValue) {
     const ctx = document.getElementById('profitChart').getContext('2d');
+    if (Chart.getChart(ctx)) {
+        Chart.getChart(ctx).destroy();  // Destroy the previous chart instance if it exists.
+    }
     new Chart(ctx, {
         type: 'bar',
         data: {
