@@ -38,4 +38,7 @@ async function calculateGains() {
 function toggleTheme() {
     document.body.classList.toggle('dark-mode');
     document.querySelector('.container').classList.toggle('dark-mode');
+    document.querySelectorAll('p, h1, label, span').forEach(function (element) {
+        element.classList.toggle('dark-mode');
+    });
 }
