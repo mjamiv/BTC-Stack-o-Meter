@@ -1,7 +1,7 @@
 body {
     font-family: 'Roboto', sans-serif;
     background: linear-gradient(135deg, #1f4037, #99f2c8);
-    color: #fff;
+    color: #333;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -11,20 +11,20 @@ body {
 }
 
 .container {
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(255, 255, 255, 0.9);
     padding: 30px;
     border-radius: 15px;
-    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
     max-width: 90%;
     width: 400px;
     text-align: center;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 h1 {
     font-size: 2rem;
     margin-bottom: 20px;
-    color: #ffcc00;
+    color: #444;
 }
 
 label {
@@ -38,10 +38,11 @@ input {
     width: 80%;
     margin: 10px 0 20px 0;
     border-radius: 30px;
-    border: none;
+    border: 1px solid #ccc;
     text-align: center;
     font-size: 1rem;
     outline: none;
+    transition: background-color 0.3s ease;
 }
 
 button {
@@ -53,7 +54,7 @@ button {
     font-size: 1.1rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
 }
 
 button:hover {
@@ -63,11 +64,11 @@ button:hover {
 #result {
     margin-top: 20px;
     font-size: 1.2em;
+    color: #333;
 }
 
 #result p {
     margin: 10px 0;
-    color: #ffcc00;
 }
 
 .theme-toggle {
@@ -128,5 +129,28 @@ body.dark-mode {
 }
 
 .container.dark-mode {
-    background: #1e1e1e;
+    background: #333;
+    color: #ffffff;
+}
+
+h1.dark-mode,
+label.dark-mode,
+span.dark-mode,
+p.dark-mode {
+    color: #ffffff;
+}
+
+input.dark-mode {
+    background-color: #444;
+    color: #ffffff;
+    border: 1px solid #666;
+}
+
+button.dark-mode {
+    background-color: #ffaa00;
+    color: #333;
+}
+
+#result.dark-mode p {
+    color: #ffffff;
 }
