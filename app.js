@@ -61,4 +61,37 @@ function savePortfolio() {
     const currency = document.getElementById('currency').value;
 
     portfolio.push({ bitcoinStack, currency });
-    displayPortfolio​⬤
+    displayPortfolio();
+}
+
+function displayPortfolio() {
+    const portfolioDiv = document.getElementById('portfolio');
+    portfolioDiv.innerHTML = '<h3>Portfolio:</h3>';
+    portfolio.forEach((item, index) => {
+        portfolioDiv.innerHTML += `<p>${index + 1}: ${item.bitcoinStack} BTC (${item.currency})</p>`;
+    });
+}
+
+function updateChart(currency, value) {
+    const ctx = document.getElementById('priceChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Current'],
+            datasets: [{
+                label: `${currency} Value`,
+                data: [value],
+                borderColor: 'rgba(75, 192, 192, 1)',
+                borderWidth: 2
+            }]
+        }
+    });
+}
+
+function toggleTheme() {
+    document.body.classList.toggle('dark-mode');
+    document.querySelector('.container').classList.toggle('dark-mode');
+    document.querySelectorAll('h1, label, span, p, input, select, button').forEach(function(element) {
+        element.classList.toggle('dark-mode');
+    });
+}
