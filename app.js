@@ -13,9 +13,9 @@ async function calculateGains() {
     const { btcPrice, goldPricePerOunce } = await fetchPriceData();
 
     const usdValue = bitcoinStack * btcPrice;
-    const costBasis = bitcoinStack * costBasisPerBitcoin;
+    const costBasis = costBasisPerBitcoin;
     const goldValue = usdValue / goldPricePerOunce;
-    const profit = usdValue - costBasis;
+    const profit = ((btcPrice - costBasisPerBitcoin) / btcPrice) * usdValue;
 
     document.getElementById('result').innerHTML = `
         <p>USD Value: $${usdValue.toFixed(2)}</p>
