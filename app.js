@@ -1,6 +1,9 @@
 async function fetchPriceData() {
     try {
         const response = await fetch('https://api.coindesk.com/v1/bpi/currentprice/BTC.json');
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
         const data = await response.json();
         const btcPrice = data.bpi.USD.rate_float;
 
@@ -10,7 +13,7 @@ async function fetchPriceData() {
         return { btcPrice, goldPricePerOunce };
     } catch (error) {
         console.error('Error fetching price data:', error);
-        alert("Failed to fetch price data. Please try again later.");
+        alert("Failed to fetch price data. Please check your internet connection or try again later.");
         throw error;
     }
 }
@@ -78,4 +81,5 @@ function toggleTheme() {
     document.querySelectorAll('h1, label, span, p').forEach(el => el.classList.toggle('dark-mode'));
     document.querySelectorAll('input').forEach(el => el.classList.toggle('dark-mode'));
     document.querySelectorAll('button').forEach(el => el.classList.toggle('dark-mode'));
+    document.getElementById('result').classList.toggle('dark-mode');
 }
