@@ -1,85 +1,51 @@
-async function fetchPriceData() {
-    try {
-        const response = await fetch('https://api.coindesk.com/v1/bpi/currentprice/BTC.json');
-        if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-        }
-        const data = await response.json();
-        const btcPrice = data.bpi.USD.rate_float;
-
-        // Placeholder gold price, should be fetched from a real API
-        const goldPricePerOunce = 1800; // Example value
-
-        return { btcPrice, goldPricePerOunce };
-    } catch (error) {
-        console.error('Error fetching price data:', error);
-        alert("Failed to fetch price data. Please check your internet connection or try again later.");
-        throw error;
+// Function to move from step 1 to step 2
+function goToStep2() {
+    const bitcoinStack = document.getElementById("bitcoinStack").value;
+    if (bitcoinStack && bitcoinStack > 0) {
+        document.getElementById("step1").style.display = "none";
+        document.getElementById("step2").style.display = "block";
+    } else {
+        alert("Please enter a valid Bitcoin stack.");
     }
 }
 
+// Function to fetch current Bitcoin price
+async function fetchBitcoinPrice() {
+    const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd');
+    const data = await response.json();
+    return data.bitcoin.usd;
+}
+
+// Function to calculate gains and show results
 async function calculateGains() {
-    document.getElementById('loading').style.display = 'block';
+    const costBasis = document.getElementById("costBasis").value;
+    const bitcoinStack = document.getElementById("bitcoinStack").value;
 
-    const bitcoinStack = document.getElementById('bitcoinStack').value;
-    const costBasisPerBitcoin = document.getElementById('costBasis').value;
+    if (costBasis && costBasis > 0) {
+        // Show loading spinner
+        document.getElementById("loading").style.display = "block";
 
-    if (!bitcoinStack || !costBasisPerBitcoin) {
-        alert("Please enter both your Bitcoin stack and cost basis.");
-        document.getElementById('loading').style.display = 'none';
-        return;
-    }
+        // Fetch current Bitcoin price
+        const currentPrice = await fetchBitcoinPrice();
+        const datePulled = new Date().toLocaleString();
 
-    try {
-        const { btcPrice, goldPricePerOunce } = await fetchPriceData();
+        // Hide loading spinner
+        document.getElementById("loading").style.display = "none";
 
-        const usdValue = bitcoinStack * btcPrice;
-        const costBasis = bitcoinStack * costBasisPerBitcoin;
-        const goldValue = usdValue / goldPricePerOunce;
-        const profit = usdValue - costBasis;
+        // Calculate gains
+        const currentValue = currentPrice * bitcoinStack;
+        const gain = currentValue - costBasis;
 
-        document.getElementById('result').innerHTML = `
-            <p>USD Value: $${usdValue.toFixed(2)}</p>
-            <p>Gold Value: ${goldValue.toFixed(2)} ounces</p>
-            <p>Profit/Loss: $${profit.toFixed(2)}</p>
+        // Display results
+        document.getElementById("result").innerHTML = `
+            <h2>Results</h2>
+            <p>Bitcoin Stack: ${bitcoinStack} BTC</p>
+            <p>Cost Basis: $${costBasis}</p>
+            <p>Current Price of Bitcoin: $${currentPrice} (Data pulled on: ${datePulled})</p>
+            <p>Current Value: $${currentValue.toFixed(2)}</p>
+            <p>Gain/Loss: $${gain.toFixed(2)}</p>
         `;
-
-        displayChart(costBasis, usdValue);
-    } catch (error) {
-        console.error("Error calculating gains:", error);
-    } finally {
-        document.getElementById('loading').style.display = 'none';
+    } else {
+        alert("Please enter a valid cost basis.");
     }
-}
-
-function displayChart(costBasis, usdValue) {
-    const ctx = document.getElementById('profitChart').getContext('2d');
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['Cost Basis', 'USD Value'],
-            datasets: [{
-                label: 'Amount in USD',
-                data: [costBasis, usdValue],
-                backgroundColor: ['#ffcc00', '#99f2c8']
-            }]
-        },
-        options: {
-            responsive: true,
-            scales: {
-                y: {
-                    beginAtZero: true
-                }
-            }
-        }
-    });
-}
-
-function toggleTheme() {
-    document.body.classList.toggle('dark-mode');
-    document.querySelector('.container').classList.toggle('dark-mode');
-    document.querySelectorAll('h1, label, span, p').forEach(el => el.classList.toggle('dark-mode'));
-    document.querySelectorAll('input').forEach(el => el.classList.toggle('dark-mode'));
-    document.querySelectorAll('button').forEach(el => el.classList.toggle('dark-mode'));
-    document.getElementById('result').classList.toggle('dark-mode');
 }
