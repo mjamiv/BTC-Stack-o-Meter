@@ -9,32 +9,31 @@
 </head>
 <body>
     <div class="container">
-        <h1><i class="fab fa-bitcoin"></i> Bitcoin Stack Calculator</h1>
-        
-        <label for="bitcoinStack">Enter your Bitcoin stack:</label>
-        <input type="number" id="bitcoinStack" placeholder="e.g., 0.5" step="0.01">
-        
-        <label for="costBasis">Enter your Cost Basis (in USD):</label>
-        <input type="number" id="costBasis" placeholder="e.g., 20000" step="0.01">
-        
-        <button onclick="calculateGains()">Calculate</button>
-        
-        <div id="loading" style="display: none;">
-            <i class="fas fa-spinner fa-spin"></i> Loading...
-        </div>
-        
-        <div id="result"></div>
-        <canvas id="profitChart" width="400" height="200" style="margin-top: 20px;"></canvas>
+        <h1><i class="fa fa-bitcoin"></i> Bitcoin Stack Calculator</h1>
 
-        <div class="theme-toggle">
-            <label class="switch">
-                <input type="checkbox" id="themeToggle" onchange="toggleTheme()">
-                <span class="slider round"></span>
-            </label>
-            <span>Dark Mode</span>
+        <!-- Step 1: Bitcoin Stack Input -->
+        <div id="step1" class="step">
+            <label for="bitcoinStack">Enter your Bitcoin stack:</label>
+            <input type="number" id="bitcoinStack" placeholder="e.g., 0.5" step="0.01">
+            <button onclick="goToStep2()">Next</button>
         </div>
+
+        <!-- Step 2: Cost Basis Input -->
+        <div id="step2" class="step" style="display:none;">
+            <label for="costBasis">Enter your Cost Basis (in USD):</label>
+            <input type="number" id="costBasis" placeholder="e.g., 20000" step="0.01">
+            <button onclick="calculateGains()">Calculate</button>
+        </div>
+
+        <!-- Loading Spinner -->
+        <div id="loading" style="display: none;">
+            <i class="fa fa-spinner fa-spin"></i> Loading...
+        </div>
+
+        <!-- Results -->
+        <div id="result"></div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <script src="app.js"></script>
 </body>
 </html>
