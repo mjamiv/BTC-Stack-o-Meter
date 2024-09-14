@@ -12,16 +12,14 @@ A simple web application to calculate the USD value, equivalent gold value, and 
 
 ## Usage
 
-1. Enter your Bitcoin holdings.
-2. Enter your cost basis (in USD).
-3. Click "Calculate" to see the results.
-4. Use the toggle switch to switch between light and dark modes.
+1. **Enter your Bitcoin holdings.**
+2. **Enter your cost basis (in USD).**
+3. **Click "Calculate" to see the results.**
+4. **Use the toggle switch to switch between light and dark modes.**
 
 ## Installation
 
-1. Clone this repository:
-   ```bash
-   git clone https://github.com/your-username/BTC-Stack-o-Meter.git
-2. Open index.html in your web browser.
+1. **Clone this repository:**
 
-License This project is licensed under the MIT License.
+   ```bash
+   git clone https://github.com/your-username/bitcoin-stack-calculator.git
