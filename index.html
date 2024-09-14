@@ -1,45 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta Tags for SEO -->
     <meta charset="UTF-8">
-    <!-- Meta description for SEO -->
-    <meta name="description" content="Calculate your Bitcoin holdings' value, equivalent gold value, and profit/loss with real-time data.">
+    <meta name="description" content="Calculate your Bitcoin holdings' value and profit/loss with real-time data.">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bitcoin Stack Calculator</title>
-    <!-- Updated Font Awesome CDN to stable version -->
+
+    <!-- Font Awesome Stable Version -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Include Chart.js CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- Link to stylesheet -->
+
+    <!-- Stylesheet -->
     <link rel="stylesheet" href="styles.css">
+
+    <!-- Chart.js Library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-    <div class="container">
-        <!-- Dark mode toggle switch -->
-        <div class="theme-toggle">
+    <main class="container">
+        <header>
+            <h1><i class="fa fa-bitcoin"></i> Bitcoin Stack Calculator</h1>
+            <!-- Dark Mode Toggle -->
             <label class="switch">
-                <input type="checkbox" id="themeSwitch" onclick="toggleTheme()">
+                <input type="checkbox" id="darkModeToggle">
                 <span class="slider round"></span>
             </label>
-            <span>Dark Mode</span>
-        </div>
-
-        <h1><i class="fa fa-bitcoin"></i> Bitcoin Stack Calculator</h1>
+        </header>
 
         <!-- Step 1: Bitcoin Stack Input -->
-        <div id="step1" class="step">
+        <section id="step1" class="step">
             <label for="bitcoinStack">Enter your Bitcoin stack:</label>
-            <input type="number" id="bitcoinStack" placeholder="e.g., 0.5" step="0.00000001">
+            <input type="number" id="bitcoinStack" placeholder="e.g., 0.5" step="0.00000001" min="0">
             <button onclick="goToStep2()">Next</button>
-        </div>
+        </section>
 
         <!-- Step 2: Cost Basis Input -->
-        <div id="step2" class="step" style="display:none;">
+        <section id="step2" class="step" style="display:none;">
             <label for="costBasis">Enter your Cost Basis (in USD):</label>
-            <input type="number" id="costBasis" placeholder="e.g., 20000" step="0.01">
-            <button onclick="goBackToStep1()">Back</button>
-            <button onclick="calculateGains()">Calculate</button>
-        </div>
+            <input type="number" id="costBasis" placeholder="e.g., 20000" step="0.01" min="0">
+            <div class="button-group">
+                <button onclick="goBackToStep1()">Back</button>
+                <button onclick="calculateGains()">Calculate</button>
+            </div>
+        </section>
 
         <!-- Loading Spinner -->
         <div id="loading" style="display: none;">
@@ -47,12 +50,13 @@
         </div>
 
         <!-- Results -->
-        <div id="result"></div>
+        <section id="result"></section>
 
-        <!-- Chart Container -->
-        <canvas id="myChart" style="max-width: 600px; margin: 0 auto; display: none;"></canvas>
-    </div>
+        <!-- Interactive Chart -->
+        <canvas id="valueChart" style="display: none;"></canvas>
+    </main>
 
+    <!-- JavaScript File -->
     <script src="app.js"></script>
 </body>
 </html>
