@@ -31,21 +31,26 @@ async function fetchBitcoinPrice() {
         alert('Error fetching Bitcoin price. Please try again later.');
         console.error(error);
         document.getElementById("loading").style.display = "none";
+        return null;
     }
 }
 
-// Function to fetch current Gold price per ounce
+// Function to fetch current Gold price per troy ounce
 async function fetchGoldPricePerOunce() {
     try {
         const response = await fetch(
-            'https://api.coingecko.com/api/v3/simple/price?ids=troy-ounce-gold&vs_currencies=usd'
+            'https://api.coingecko.com/api/v3/simple/price?ids=gold&vs_currencies=usd'
         );
         const data = await response.json();
-        return data['troy-ounce-gold'].usd;
+        const pricePerGram = data.gold.usd;
+        const gramsPerTroyOunce = 31.1035;
+        const pricePerOunce = pricePerGram * gramsPerTroyOunce;
+        return pricePerOunce;
     } catch (error) {
-        alert('Error fetching Gold price. Please try again later.');
+        alert('Error fetching gold price. Please try again later.');
         console.error(error);
         document.getElementById("loading").style.display = "none";
+        return null;
     }
 }
 
