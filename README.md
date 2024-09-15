@@ -1,101 +1,25 @@
-body {
-    font-family: Arial, sans-serif;
-    text-align: center;
-    margin: 0;
-    padding: 20px;
-    background-color: #ffffff;
-    color: #333333;
-}
+# Bitcoin Stack Calculator
 
-body.dark-mode {
-    background-color: #2c3e50;
-    color: #ecf0f1;
-}
+A simple web application to calculate the USD value, equivalent gold value, and profit/loss of your Bitcoin holdings based on the current market price.
 
-.container {
-    max-width: 600px;
-    margin: 0 auto;
-}
+## Features
 
-header {
-    position: relative;
-}
+- **Real-time Bitcoin Price**: Fetches the latest Bitcoin price in USD.
+- **Gold Value Conversion**: Calculates the equivalent gold value of your Bitcoin holdings using PAX Gold (PAXG) price from CoinGecko.
+- **Profit/Loss Calculation**: Determines your profit or loss based on your cost basis.
+- **Dark Mode**: Toggle between light and dark themes for better readability.
+- **Interactive Chart**: Visualize the cost basis versus the current USD value.
 
-h1 {
-    font-size: 24px;
-}
+## Usage
 
-.switch {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-}
+1. **Enter your Bitcoin holdings.**
+2. **Enter your cost basis (in USD).**
+3. **Click "Calculate" to see the results.**
+4. **Use the toggle switch to switch between light and dark modes.**
 
-.switch input {
-    display: none;
-}
+## Installation
 
-.slider {
-    position: relative;
-    display: inline-block;
-    width: 50px;
-    height: 24px;
-    background-color: #ccc;
-    border-radius: 24px;
-    cursor: pointer;
-}
+1. **Clone this repository:**
 
-.slider::before {
-    content: '';
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    left: 2px;
-    top: 2px;
-    background-color: white;
-    border-radius: 50%;
-    transition: 0.4s;
-}
-
-input:checked + .slider {
-    background-color: #66bb6a;
-}
-
-input:checked + .slider::before {
-    transform: translateX(26px);
-}
-
-.step {
-    margin-bottom: 20px;
-}
-
-.button-group {
-    display: flex;
-    justify-content: space-around;
-}
-
-button {
-    background-color: #f39c12;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-}
-
-button:hover {
-    background-color: #e67e22;
-}
-
-#result {
-    margin-top: 20px;
-    font-size: 18px;
-}
-
-#loading {
-    margin-top: 20px;
-}
-
-canvas {
-    max-width: 100%;
-    margin-top: 20px;
-}
+   ```bash
+   git clone https://github.com/your-username/bitcoin-stack-calculator.git
