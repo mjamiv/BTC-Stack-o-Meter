@@ -83,4 +83,53 @@ async function calculateGains() {
             // Display results
             document.getElementById("result").innerHTML = `
                 <h2>Results</h2>
-                <p​⬤
+                <p>Bitcoin Stack: ${bitcoinStack} BTC</p>
+                <p>Cost Basis: ${formatter.format(costBasis)}</p>
+                <p>Current Price of Bitcoin: ${formatter.format(currentPrice)} (Data pulled on: ${datePulled})</p>
+                <p>Current Value: ${formatter.format(currentValue)}</p>
+                <p>Gain/Loss: ${formatter.format(gain)}</p>
+                <p>Equivalent Gold Value: ${goldEquivalent.toFixed(2)} ounces</p>
+            `;
+
+            // Show the chart
+            document.getElementById('valueChart').style.display = 'block';
+            generateChart(costBasis, currentValue);
+        }
+    } else {
+        alert("Please enter a valid cost basis.");
+    }
+}
+
+// Function to generate the chart
+function generateChart(costBasis, currentValue) {
+    const ctx = document.getElementById('valueChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Cost Basis', 'Current Value'],
+            datasets: [{
+                label: 'USD Value',
+                data: [costBasis, currentValue],
+                backgroundColor: ['#e67e22', '#f39c12'],
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        callback: function(value) {
+                            return '$' + value.toLocaleString();
+                        }
+                    }
+                }
+            }
+        }
+    });
+}
+
+// Dark Mode Toggle
+const toggleSwitch = document.getElementById('darkModeToggle');
+toggleSwitch.addEventListener('change', function() {
+    document.body.classList.toggle('dark-mode');
+});
