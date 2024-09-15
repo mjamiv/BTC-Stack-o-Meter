@@ -35,25 +35,6 @@ async function fetchBitcoinPrice() {
     }
 }
 
-// Function to fetch current Gold price per troy ounce
-async function fetchGoldPricePerOunce() {
-    try {
-        const response = await fetch(
-            'https://api.coingecko.com/api/v3/simple/price?ids=gold&vs_currencies=usd'
-        );
-        const data = await response.json();
-        const pricePerGram = data.gold.usd;
-        const gramsPerTroyOunce = 31.1035;
-        const pricePerOunce = pricePerGram * gramsPerTroyOunce;
-        return pricePerOunce;
-    } catch (error) {
-        alert('Error fetching gold price. Please try again later.');
-        console.error(error);
-        document.getElementById("loading").style.display = "none";
-        return null;
-    }
-}
-
 // Function to calculate gains and show results
 async function calculateGains() {
     costBasisPerBitcoin = parseFloat(document.getElementById("costBasis").value);
@@ -62,23 +43,19 @@ async function calculateGains() {
         // Show loading spinner
         document.getElementById("loading").style.display = "block";
 
-        // Fetch current Bitcoin price and Gold price per ounce
-        const [currentPrice, goldPricePerOunce] = await Promise.all([
-            fetchBitcoinPrice(),
-            fetchGoldPricePerOunce()
-        ]);
+        // Fetch current Bitcoin price
+        const currentPrice = await fetchBitcoinPrice();
 
         const datePulled = new Date().toLocaleString();
 
         // Hide loading spinner
         document.getElementById("loading").style.display = "none";
 
-        if (currentPrice && goldPricePerOunce) {
+        if (currentPrice) {
             // Calculate gains
             const currentValue = currentPrice * bitcoinStack;
             const totalCostBasis = costBasisPerBitcoin * bitcoinStack;
             const gain = currentValue - totalCostBasis;
-            const goldEquivalent = currentValue / goldPricePerOunce;
 
             // Format numbers
             const formatter = new Intl.NumberFormat('en-US', {
@@ -95,7 +72,6 @@ async function calculateGains() {
                 <p>Current Price of Bitcoin: ${formatter.format(currentPrice)} (Data pulled on: ${datePulled})</p>
                 <p>Current Value: ${formatter.format(currentValue)}</p>
                 <p>Gain/Loss: ${formatter.format(gain)}</p>
-                <p>Equivalent Gold Value: ${goldEquivalent.toFixed(2)} ounces</p>
             `;
 
             // Show the chart
