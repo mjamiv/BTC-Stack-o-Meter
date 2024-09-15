@@ -33,17 +33,15 @@ async function fetchBitcoinPrice() {
     }
 }
 
-// Function to fetch current Gold price per ounce
+// Function to fetch current Gold price using PAX Gold (PAXG) from CoinGecko
 async function fetchGoldPrice() {
     try {
-        // Use a reliable gold price API
-        const response = await fetch('https://metals-api.com/api/latest?access_key=YOUR_API_KEY&symbols=XAU&base=USD');
+        const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=pax-gold&vs_currencies=usd');
         const data = await response.json();
-        return 1 / data.rates.XAU; // USD per ounce
+        return data['pax-gold'].usd;
     } catch (error) {
         alert('Error fetching Gold price. Please try again later.');
         console.error(error);
-        // Hide loading spinner if an error occurs
         document.getElementById("loading").style.display = "none";
     }
 }
@@ -57,8 +55,11 @@ async function calculateGains() {
         document.getElementById("loading").style.display = "block";
 
         // Fetch current Bitcoin price and Gold price
-        const currentPrice = await fetchBitcoinPrice();
-        const goldPricePerOunce = await fetchGoldPrice();
+        const [currentPrice, goldPricePerOunce] = await Promise.all([
+            fetchBitcoinPrice(),
+            fetchGoldPrice()
+        ]);
+
         const datePulled = new Date().toLocaleString();
 
         // Hide loading spinner
