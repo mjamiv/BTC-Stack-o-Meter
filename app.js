@@ -1,6 +1,6 @@
 // Initialize variables
 let bitcoinStack = 0;
-let costBasis = 0;
+let costBasisPerBitcoin = 0;
 
 // Function to move from step 1 to step 2
 function goToStep2() {
@@ -51,9 +51,9 @@ async function fetchGoldPricePerOunce() {
 
 // Function to calculate gains and show results
 async function calculateGains() {
-    costBasis = parseFloat(document.getElementById("costBasis").value);
+    costBasisPerBitcoin = parseFloat(document.getElementById("costBasis").value);
 
-    if (costBasis && costBasis > 0) {
+    if (costBasisPerBitcoin && costBasisPerBitcoin > 0) {
         // Show loading spinner
         document.getElementById("loading").style.display = "block";
 
@@ -71,7 +71,8 @@ async function calculateGains() {
         if (currentPrice && goldPricePerOunce) {
             // Calculate gains
             const currentValue = currentPrice * bitcoinStack;
-            const gain = currentValue - costBasis;
+            const totalCostBasis = costBasisPerBitcoin * bitcoinStack;
+            const gain = currentValue - totalCostBasis;
             const goldEquivalent = currentValue / goldPricePerOunce;
 
             // Format numbers
@@ -84,7 +85,8 @@ async function calculateGains() {
             document.getElementById("result").innerHTML = `
                 <h2>Results</h2>
                 <p>Bitcoin Stack: ${bitcoinStack} BTC</p>
-                <p>Cost Basis: ${formatter.format(costBasis)}</p>
+                <p>Cost Basis per Bitcoin: ${formatter.format(costBasisPerBitcoin)}</p>
+                <p>Total Cost Basis: ${formatter.format(totalCostBasis)}</p>
                 <p>Current Price of Bitcoin: ${formatter.format(currentPrice)} (Data pulled on: ${datePulled})</p>
                 <p>Current Value: ${formatter.format(currentValue)}</p>
                 <p>Gain/Loss: ${formatter.format(gain)}</p>
@@ -93,23 +95,23 @@ async function calculateGains() {
 
             // Show the chart
             document.getElementById('valueChart').style.display = 'block';
-            generateChart(costBasis, currentValue);
+            generateChart(totalCostBasis, currentValue);
         }
     } else {
-        alert("Please enter a valid cost basis.");
+        alert("Please enter a valid cost basis per Bitcoin.");
     }
 }
 
 // Function to generate the chart
-function generateChart(costBasis, currentValue) {
+function generateChart(totalCostBasis, currentValue) {
     const ctx = document.getElementById('valueChart').getContext('2d');
     new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['Cost Basis', 'Current Value'],
+            labels: ['Total Cost Basis', 'Current Value'],
             datasets: [{
                 label: 'USD Value',
-                data: [costBasis, currentValue],
+                data: [totalCostBasis, currentValue],
                 backgroundColor: ['#e67e22', '#f39c12'],
             }]
         },
