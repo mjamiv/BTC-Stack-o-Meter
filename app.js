@@ -22,23 +22,26 @@ function goBackToStep1() {
 // Function to fetch current Bitcoin price
 async function fetchBitcoinPrice() {
     try {
-        const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd');
+        const response = await fetch(
+            'https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd'
+        );
         const data = await response.json();
         return data.bitcoin.usd;
     } catch (error) {
         alert('Error fetching Bitcoin price. Please try again later.');
         console.error(error);
-        // Hide loading spinner if an error occurs
         document.getElementById("loading").style.display = "none";
     }
 }
 
-// Function to fetch current Gold price using PAX Gold (PAXG) from CoinGecko
-async function fetchGoldPrice() {
+// Function to fetch current Gold price per ounce
+async function fetchGoldPricePerOunce() {
     try {
-        const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=pax-gold&vs_currencies=usd');
+        const response = await fetch(
+            'https://api.coingecko.com/api/v3/simple/price?ids=troy-ounce-gold&vs_currencies=usd'
+        );
         const data = await response.json();
-        return data['pax-gold'].usd;
+        return data['troy-ounce-gold'].usd;
     } catch (error) {
         alert('Error fetching Gold price. Please try again later.');
         console.error(error);
@@ -54,10 +57,10 @@ async function calculateGains() {
         // Show loading spinner
         document.getElementById("loading").style.display = "block";
 
-        // Fetch current Bitcoin price and Gold price
+        // Fetch current Bitcoin price and Gold price per ounce
         const [currentPrice, goldPricePerOunce] = await Promise.all([
             fetchBitcoinPrice(),
-            fetchGoldPrice()
+            fetchGoldPricePerOunce()
         ]);
 
         const datePulled = new Date().toLocaleString();
@@ -80,53 +83,4 @@ async function calculateGains() {
             // Display results
             document.getElementById("result").innerHTML = `
                 <h2>Results</h2>
-                <p>Bitcoin Stack: ${bitcoinStack} BTC</p>
-                <p>Cost Basis: ${formatter.format(costBasis)}</p>
-                <p>Current Price of Bitcoin: ${formatter.format(currentPrice)} (Data pulled on: ${datePulled})</p>
-                <p>Current Value: ${formatter.format(currentValue)}</p>
-                <p>Gain/Loss: ${formatter.format(gain)}</p>
-                <p>Equivalent Gold Value: ${goldEquivalent.toFixed(2)} ounces</p>
-            `;
-
-            // Show the chart
-            document.getElementById('valueChart').style.display = 'block';
-            generateChart(costBasis, currentValue);
-        }
-    } else {
-        alert("Please enter a valid cost basis.");
-    }
-}
-
-// Function to generate the chart
-function generateChart(costBasis, currentValue) {
-    const ctx = document.getElementById('valueChart').getContext('2d');
-    new Chart(ctx, {
-        type: 'bar',
-        data: {
-            labels: ['Cost Basis', 'Current Value'],
-            datasets: [{
-                label: 'USD Value',
-                data: [costBasis, currentValue],
-                backgroundColor: ['#e67e22', '#f39c12'],
-            }]
-        },
-        options: {
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    ticks: {
-                        callback: function(value) {
-                            return '$' + value.toLocaleString();
-                        }
-                    }
-                }
-            }
-        }
-    });
-}
-
-// Dark Mode Toggle
-const toggleSwitch = document.getElementById('darkModeToggle');
-toggleSwitch.addEventListener('change', function() {
-    document.body.classList.toggle('dark-mode');
-});
+                <p​⬤
