@@ -26,7 +26,7 @@ header.header {
 
 /* Logo styling */
 .logo {
-    max-width: 2000px; /* Adjusted to a reasonable size */
+    max-width: 2500px; /* Adjusted to a reasonable size */
     width: 100%;
     height: auto;
     margin-bottom: 10px;
@@ -34,7 +34,7 @@ header.header {
 
 /* Title styling */
 h1 {
-    font-size: 24px;
+    font-size: 18px;
     margin: 0;
     padding: 0;
     font-family: 'Montserrat', sans-serif; /* Changed to Montserrat */
