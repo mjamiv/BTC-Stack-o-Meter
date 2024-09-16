@@ -1,3 +1,4 @@
+/* General body styling */
 body {
     font-family: Arial, sans-serif;
     text-align: center;
@@ -12,29 +13,42 @@ body.dark-mode {
     color: #ecf0f1;
 }
 
+/* Container */
 .container {
     max-width: 600px;
     margin: 0 auto;
+    padding: 20px;
 }
 
+/* Header styling */
 header {
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 20px;
 }
 
-h1 {
-    font-size: 24px;
+/* Logo styling */
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* New Logo Style */
 .logo {
-    width: 50px;
+    width: 60px;
     height: auto;
     margin-right: 10px;
 }
 
+h1 {
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+/* Dark Mode Toggle */
 .switch {
     position: absolute;
     top: 10px;
@@ -80,41 +94,87 @@ input:checked + .slider:before {
     transform: translateX(26px);
 }
 
+/* Form Step Sections */
 .step {
     margin-bottom: 20px;
 }
 
-.button-group {
-    display: flex;
-    justify-content: space-around;
+label {
+    display: block;
+    font-size: 18px;
+    margin-bottom: 10px;
 }
 
-button {
+input[type="number"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: calc(100% - 24px);
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+/* Buttons */
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+button.btn {
     background-color: #f39c12;
     color: white;
     border: none;
     padding: 10px 20px;
+    font-size: 16px;
     cursor: pointer;
+    border-radius: 5px;
 }
 
-button:hover {
+button.btn:hover {
     background-color: #e67e22;
 }
 
-#result {
-    margin-top: 20px;
-    font-size: 18px;
-}
-
+/* Loading Spinner */
 #loading {
     margin-top: 20px;
 }
 
-canvas {
+.fa-spinner {
+    font-size: 24px;
+}
+
+/* Result Section */
+.result-section {
+    text-align: left;
+    margin-top: 30px;
+}
+
+.result-section h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.result-section p {
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+#valueChart {
     max-width: 100%;
     margin-top: 20px;
 }
 
-canvas#valueChart {
-    display: none;
+/* Media Query for small screens */
+@media (max-width: 768px) {
+    .button-group {
+        flex-direction: column;
+        gap: 0;
+    }
+
+    button.btn {
+        width: 100%;
+        margin-bottom: 10px;
+    }
 }
