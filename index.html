@@ -7,11 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bitcoin Stack Calculator</title>
 
-    <!-- Font Awesome Stable Version -->
+    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <!-- Stylesheet -->
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 
     <!-- Chart.js Library -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -19,7 +19,10 @@
 <body>
     <main class="container">
         <header>
+            <!-- Inserted the logo here -->
+            <img src="btc_SOM_logo.png" alt="Bitcoin SOM Logo" class="logo">
             <h1><i class="fa fa-bitcoin"></i> Bitcoin Stack Calculator</h1>
+            
             <!-- Dark Mode Toggle -->
             <label class="switch">
                 <input type="checkbox" id="darkModeToggle">
@@ -49,7 +52,7 @@
             <i class="fa fa-spinner fa-spin"></i> Loading...
         </div>
 
-        <!-- Results -->
+        <!-- Results Section -->
         <section id="result"></section>
 
         <!-- Interactive Chart -->
