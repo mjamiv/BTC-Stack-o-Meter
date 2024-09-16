@@ -5,12 +5,12 @@ body {
     margin: 0;
     padding: 20px;
     background-color: #231f20;
-    color: #333333;
+    color: #ef8f1c;
 }
 
 body.dark-mode {
     background-color: #231f20;
-    color: #ecf0f1;
+    color: #ef8f1c;
 }
 
 /* Container */
@@ -152,16 +152,19 @@ button.btn:hover {
 .result-section {
     text-align: left;
     margin-top: 30px;
+    font-color: #ef8f1c;
 }
 
 .result-section h2 {
     text-align: center;
     margin-bottom: 20px;
+    font-color: #ef8f1c;
 }
 
 .result-section p {
     font-size: 18px;
     margin: 5px 0;
+    font-color: #ef8f1c;
 }
 
 #valueChart {
