@@ -41,6 +41,7 @@ header.header {
 /* Logo styling */
 .logo {
     width: 200px;
+    align-items: center;
 }
 
 h1 {
