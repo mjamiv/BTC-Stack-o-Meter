@@ -5,12 +5,7 @@ body {
     margin: 0;
     padding: 20px;
     background-color: #000000; /* Pure black */
-    color: #ef8f1c; /* Maintained the specified orange color */
-}
-
-body.dark-mode {
-    background-color: #000000;
-    color: #ef8f1c;
+    color: #ef8f1c; /* Orange color for default text */
 }
 
 /* Container */
@@ -22,79 +17,28 @@ body.dark-mode {
 
 /* Header styling */
 header.header {
-    position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    flex-direction: row;
+    justify-content: center; /* Center the logo */
+    flex-direction: column; /* Stack vertically */
     margin-bottom: 20px;
-}
-
-/* Logo and Title in a flex container */
-.logo-title-container {
-    display: flex;
-    align-items: left;
-    justify-content: left;
-    width: 2000px;
 }
 
 /* Logo styling */
 .logo {
-    width: 1000px;
-    align-items: center;
+    max-width: 200px; /* Adjust as needed */
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
 }
 
+/* Title styling */
 h1 {
     font-size: 24px;
     margin: 0;
     padding: 0;
-    font-family: "Comic Sans MS", "Comic Sans", cursive;
-}
-
-/* Dark Mode Toggle */
-.switch {
-    position: absolute;
-    top: 20px;
-    right: 10px;
-}
-
-.switch input {
-    display: none;
-}
-
-.slider {
-    position: relative;
-    display: inline-block;
-    width: 50px;
-    height: 24px;
-    background-color: #ccc;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: background-color 0.4s;
-}
-
-.slider.round {
-    border-radius: 50px;
-}
-
-.slider:before {
-    position: absolute;
-    content: '';
-    height: 20px;
-    width: 20px;
-    left: 2px;
-    bottom: 2px;
-    background-color: white;
-    transition: 0.4s;
-    border-radius: 50%;
-}
-
-input:checked + .slider {
-    background-color: #669966;
-}
-
-input:checked + .slider:before {
-    transform: translateX(26px);
+    font-family: 'Montserrat', sans-serif; /* Changed to Montserrat */
+    color: #ef8f1c;
 }
 
 /* Form Step Sections */
@@ -106,6 +50,7 @@ label {
     display: block;
     font-size: 18px;
     margin-bottom: 10px;
+    color: #ef8f1c; /* Orange color for parameters */
 }
 
 input[type="number"] {
@@ -116,6 +61,9 @@ input[type="number"] {
     width: calc(100% - 24px);
     box-sizing: border-box;
     margin-bottom: 10px;
+    background-color: #333; /* Better contrast on black background */
+    color: white; /* Input text in white */
+    border-color: #ef8f1c;
 }
 
 /* Buttons */
@@ -125,7 +73,7 @@ input[type="number"] {
     gap: 10px;
 }
 
-button.btn {
+button.btn, #resetButton {
     background-color: #f39c12;
     color: white;
     border: none;
@@ -135,7 +83,7 @@ button.btn {
     border-radius: 5px;
 }
 
-button.btn:hover {
+button.btn:hover, #resetButton:hover {
     background-color: #e67e22;
 }
 
@@ -152,24 +100,51 @@ button.btn:hover {
 .result-section {
     text-align: left;
     margin-top: 30px;
-    font-color: #ef8f1c;
 }
 
 .result-section h2 {
     text-align: center;
     margin-bottom: 20px;
-    font-color: #ef8f1c;
+    color: #ef8f1c;
 }
 
 .result-section p {
     font-size: 18px;
     margin: 5px 0;
-    font-color: #ef8f1c;
+    color: #ef8f1c; /* Orange for parameters */
+}
+
+.result-section p span {
+    color: white; /* Results in white */
 }
 
 #valueChart {
     max-width: 100%;
     margin-top: 20px;
+}
+
+/* Footer */
+footer {
+    margin-top: 40px;
+    color: #ef8f1c;
+}
+
+footer p {
+    margin: 10px 0;
+}
+
+footer button {
+    background-color: #f39c12;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+footer button:hover {
+    background-color: #e67e22;
 }
 
 /* Media Query for small screens */
