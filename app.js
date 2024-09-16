@@ -164,14 +164,12 @@ function resetStack() {
     bitcoinStack = 0;
     costBasisPerBitcoin = 0;
 
-    // Clear input fields
+    // Clear input fields (make sure the IDs are correct)
     document.getElementById("bitcoinStack").value = '';
     document.getElementById("costBasis").value = '';
 
-    // Hide step 2
+    // Hide step 2 and show step 1 (smooth transitions if necessary)
     document.getElementById("step2").style.display = "none";
-
-    // Show step 1
     document.getElementById("step1").style.display = "block";
 
     // Hide result section
@@ -183,7 +181,7 @@ function resetStack() {
     // Destroy the existing chart instance if it exists
     if (chartInstance) {
         chartInstance.destroy();
-        chartInstance = null;
+        chartInstance = null;  // Reset the chartInstance for future updates
     }
 
     // Optionally, scroll back to the top for better user experience
