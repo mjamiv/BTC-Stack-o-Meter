@@ -24,16 +24,9 @@ header.header {
     margin-bottom: 20px;
 }
 
-/* Add this to center the logo */
-.header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 /* Logo styling */
 .logo {
-    max-width: 2000px; /* Adjust as needed */
+    max-width: 200px; /* Adjusted to a reasonable size */
     width: 100%;
     height: auto;
     margin-bottom: 10px;
@@ -89,6 +82,7 @@ button.btn, #resetButton {
     cursor: pointer;
     border-radius: 5px;
 }
+
 #resetButton {
     background-color: #f39c12; /* Matches with other button */
     color: white;
@@ -138,18 +132,25 @@ button.btn:hover, #resetButton:hover {
     color: white; /* Results in white */
 }
 
+.result-section button#resetButton {
+    display: block;
+    margin: 20px auto 0 auto;
+}
+
 /* Styling for the chart container */
 #chartContainer {
     width: 100%;
     max-width: 600px;  /* Set a max width for the chart */
-    margin: 0 auto;    /* Center the chart container */
+    margin: 20px auto 0 auto;    /* Center the chart container with some top margin */
     padding: 20px;     /* Add some padding around the chart */
+    background-color: #1a1a1a; /* Dark background for contrast */
+    border-radius: 10px; /* Rounded corners */
 }
 
 /* Responsive chart styling */
 #valueChart {
     width: 100%;   /* Make the canvas fill the container */
-    height: auto;  /* Adjust height automatically */
+    height: 400px;  /* Set a fixed height for better visibility */
     display: block; /* Ensures the chart is displayed correctly */
 }
 
@@ -187,5 +188,9 @@ footer button:hover {
     button.btn {
         width: 100%;
         margin-bottom: 10px;
+    }
+
+    #valueChart {
+        height: 300px; /* Adjust height for smaller screens */
     }
 }
