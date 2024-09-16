@@ -24,6 +24,13 @@ header.header {
     margin-bottom: 20px;
 }
 
+/* Add this to center the logo */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 /* Logo styling */
 .logo {
     max-width: 200px; /* Adjust as needed */
@@ -81,6 +88,19 @@ button.btn, #resetButton {
     font-size: 16px;
     cursor: pointer;
     border-radius: 5px;
+}
+#resetButton {
+    background-color: #f39c12; /* Matches with other button */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#resetButton:hover {
+    background-color: #e67e22;
 }
 
 button.btn:hover, #resetButton:hover {
