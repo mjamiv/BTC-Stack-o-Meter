@@ -39,6 +39,7 @@ async function fetchBitcoinPrice() {
     } catch (error) {
         alert('Error fetching Bitcoin price. Please try again later.');
         console.error('Fetch Error:', error);
+        document.getElementById("loading").style.display = "none";
         return null;
     }
 }
