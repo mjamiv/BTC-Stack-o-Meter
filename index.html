@@ -25,13 +25,8 @@
             <div class="logo-title-container">
                 <!-- Inserted the logo here -->
                 <img src="btc_SOM_logo.png" alt="Bitcoin Stack Calculator" class="logo">
+                <h1>Bitcoin Stack Calculator</h1>
             </div>
-            
-            <!-- Dark Mode Toggle -->
-            <label class="switch">
-                <input type="checkbox" id="darkModeToggle">
-                <span class="slider round"></span>
-            </label>
         </header>
 
         <!-- Step 1: Bitcoin Stack Input -->
@@ -70,6 +65,12 @@
         <!-- Interactive Chart -->
         <canvas id="valueChart" style="display: none;"></canvas>
     </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; @mjamiv 2024</p>
+        <button id="resetButton" onclick="resetStack()">Reset Stack</button>
+    </footer>
 
     <!-- JavaScript File -->
     <script src="app.js"></script>
