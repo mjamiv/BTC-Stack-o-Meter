@@ -27,7 +27,7 @@ header.header {
 /* Logo styling */
 .logo {
     max-width: 3500px; /* Adjusted to a reasonable size */
-    width: 115%;
+    width: 100%;
     height: auto;
     margin-bottom: 10px;
 }
