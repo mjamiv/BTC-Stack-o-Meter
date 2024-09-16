@@ -85,8 +85,8 @@ async function calculateGains() {
             // Show the result section
             document.getElementById("result").style.display = "block";
 
-            // Show the chart
-            document.getElementById('valueChart').style.display = 'block';
+            // Show the chart container
+            document.getElementById('chartContainer').style.display = 'block';
             generateChart(totalCostBasis, currentValue);
 
             // Scroll to the result section for better user experience
@@ -175,8 +175,8 @@ function resetStack() {
     // Hide result section
     document.getElementById("result").style.display = "none";
 
-    // Hide the chart
-    document.getElementById('valueChart').style.display = 'none';
+    // Hide the chart container
+    document.getElementById('chartContainer').style.display = 'none';
 
     // Destroy the existing chart instance if it exists
     if (chartInstance) {
