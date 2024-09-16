@@ -19,8 +19,10 @@
 <body>
     <main class="container">
         <header>
-            <!-- Inserted the logo here -->
-            <img src="btc_SOM_logo.png" alt="Bitcoin SOM Logo" class="logo">
+            <div class="logo-container">
+                <!-- Inserted the logo here -->
+                <img src="btc_SOM_logo.png" alt="Bitcoin SOM Logo" class="logo">
+            </div>
             <h1><i class="fa fa-bitcoin"></i> Bitcoin Stack Calculator</h1>
             
             <!-- Dark Mode Toggle -->
@@ -34,7 +36,7 @@
         <section id="step1" class="step">
             <label for="bitcoinStack">Enter your Bitcoin stack:</label>
             <input type="number" id="bitcoinStack" placeholder="e.g., 0.5" step="0.00000001" min="0">
-            <button onclick="goToStep2()">Next</button>
+            <button class="btn" onclick="goToStep2()">Next</button>
         </section>
 
         <!-- Step 2: Cost Basis Input -->
@@ -42,8 +44,8 @@
             <label for="costBasis">Enter your Cost Basis <strong>per Bitcoin</strong> (in USD):</label>
             <input type="number" id="costBasis" placeholder="e.g., 20000" step="0.01" min="0">
             <div class="button-group">
-                <button onclick="goBackToStep1()">Back</button>
-                <button onclick="calculateGains()">Calculate</button>
+                <button class="btn" onclick="goBackToStep1()">Back</button>
+                <button class="btn" onclick="calculateGains()">Calculate</button>
             </div>
         </section>
 
@@ -53,7 +55,15 @@
         </div>
 
         <!-- Results Section -->
-        <section id="result"></section>
+        <section id="result" class="result-section">
+            <h2>Results</h2>
+            <p>Bitcoin Stack: <span id="bitcoinStackDisplay"></span></p>
+            <p>Cost Basis per Bitcoin: <span id="costBasisDisplay"></span></p>
+            <p>Total Cost Basis: <span id="totalCostBasis"></span></p>
+            <p>Current Price of Bitcoin: <span id="currentPriceDisplay"></span></p>
+            <p>Current Value: <span id="currentValueDisplay"></span></p>
+            <p>Gain/Loss: <span id="gainLossDisplay"></span></p>
+        </section>
 
         <!-- Interactive Chart -->
         <canvas id="valueChart" style="display: none;"></canvas>
