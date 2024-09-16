@@ -1,15 +1,15 @@
 /* General body styling */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Montserrat', sans-serif; /* Updated to Montserrat */
     text-align: center;
     margin: 0;
     padding: 20px;
-    background-color: #231f20;
-    color: #ef8f1c;
+    background-color: #000000; /* Pure black */
+    color: #ef8f1c; /* Maintained the specified orange color */
 }
 
 body.dark-mode {
-    background-color: #231f20;
+    background-color: #000000;
     color: #ef8f1c;
 }
 
