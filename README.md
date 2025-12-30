@@ -2,6 +2,8 @@
 
 A simple web application to calculate the USD value and profit/loss of your Bitcoin holdings based on the current market price.
 
+access app at: https://mjamiv.github.io/BTC-Stack-o-Meter/
+
 ## Features
 
 - **Real-time Bitcoin Price**: Fetches the latest Bitcoin price in USD.
